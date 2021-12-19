@@ -1,25 +1,31 @@
-import logo from './logo.svg';
+import React, {Component} from 'react'
 import './App.css';
+import Header from "./components/Header";
+import Home from "./components/Home";
+import Users from "./components/Users";
+import PageNotFound from "./components/404";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import {BrowserRouter, Routes, Route} from 'react-router-dom'
+import UserDetails from "./components/UserDetails";
+class App extends Component{
+    render(){
+        return (
+            <>
+                <BrowserRouter>
+                    <Routes>
+                        <Route path="/" element={<Header />}>
+                            <Route path='/' element={<Home/>}/>
+                            <Route path='/home' element={<Home/>}/>
+                            <Route path='/users' element={<Users/>}/>
+                            <Route path="/users/:username" element={<UserDetails/>}/>
+                            <Route path="/users/:username/:follow" element={<Users/>}/>
+                        </Route>
+                        <Route path="*" element={<PageNotFound/>}/>
+                    </Routes>
+                </BrowserRouter>
+            </>
+        )
+    }
 }
 
 export default App;
