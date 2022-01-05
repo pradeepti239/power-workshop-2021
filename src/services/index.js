@@ -36,3 +36,39 @@ export const followers=async (payload)=>{
         return [];
     }
 }
+
+export const userfollowers=async (user)=>{
+    try{
+        const {data} = await request({
+            url: `users/${user}/followers`
+        })
+        return data;
+    }catch (e) {
+        return [];
+    }
+}
+
+
+export const userfollowing=async (user)=>{
+    try{
+        const {data} = await request({
+            url: `users/${user}/following`
+        })
+        return data;
+    }catch (e) {
+        return [];
+    }
+}
+
+export const publicrepos=async (user)=>{
+    try{
+        const {data} = await request({
+            url: `users/${user}/repos`
+        })
+        return data;
+    }catch (e) {
+        return [];
+    }
+}
+
+
